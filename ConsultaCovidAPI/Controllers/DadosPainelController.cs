@@ -18,7 +18,7 @@ namespace ConsultaCovidAPI.Controllers
         }
 
         [HttpGet]
-        public List<DadosPainel> BuscaTodosOsDados()
+        public ActionResult<List<DadosPainel>> BuscaTodosOsDados()
         {
              var dados = DadosPainelDTO.ReadCsvFile();
             return dados;
