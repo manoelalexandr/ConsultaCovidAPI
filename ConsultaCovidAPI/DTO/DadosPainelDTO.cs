@@ -2,12 +2,13 @@
 using ConsultaCovidAPI.Model;
 using ConsultaCovidAPI.DTO;
 
+
 namespace ConsultaCovidAPI.DTO
 {
     public class DadosPainelDTO
     {
 
-        public static void ReadCsvFile()
+        public static List<DadosPainel> ReadCsvFile()
         {
             var csvFileDescription = new CsvFileDescription
             {
@@ -18,7 +19,9 @@ namespace ConsultaCovidAPI.DTO
             };
 
             var csvContext = new CsvContext();
-            var dadosPainel = csvContext.Read<DadosPainel>("HIST_PAINEL_COVIDBR_2020_Parte1_16jan2023.csv", csvFileDescription);
+
+            var dadosPainel = csvContext.Read<DadosPainel>(@"C:\HIST_PAINEL_COVIDBR_2020_Parte1_16jan2023.csv", csvFileDescription).ToList(); 
+            return (List<DadosPainel>)dadosPainel;
         }
     }
 }
