@@ -1,5 +1,5 @@
-﻿using ConsultaCovidAPI.DTO;
-using ConsultaCovidAPI.Model;
+﻿using ConsultaCovidAPI.Model;
+using ConsultaCovidAPI.Services;
 using LINQtoCSV;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -10,18 +10,19 @@ namespace ConsultaCovidAPI.Controllers
     [ApiController]
     public class DadosPainelController : ControllerBase
     {
-        private readonly ILogger<DadosPainelController> _logger;
+        private readonly ICSVService _csvService;
 
-        public DadosPainelController(ILogger<DadosPainelController> logger)
+        public DadosPainelController(ICSVService csvService)
         {
-            _logger = logger;
+            _csvService = csvService;
         }
 
-        [HttpGet]
-        public ActionResult<List<DadosPainel>> BuscaTodosOsDados()
+        [HttpPost("read-employees-csv")]
+        public async Task<IActionResult> GetDadosCSV([FromForm] IFormFileCollection file)
         {
-             var dados = DadosPainelDTO.ReadCsvFile();
-            return dados;
+            var dados = _csvService.ReadCSV<DadosPainel>(file[0].OpenReadStream());
+
+            return Ok(dados);
         }
     }
 }
