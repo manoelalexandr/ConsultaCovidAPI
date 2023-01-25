@@ -1,7 +1,6 @@
 regiao,estado,municipio,coduf,codmun,codRegiaoSaude,nomeRegiaoSaude,data,semanaEpi,populacaoTCU2019,casosAcumulado,casosNovos,obitosAcumulado,obitosNovos,Recuperadosnovos,emAcompanhamentoNovos,interior/metropolitana
-Brasil,,,76,,,,25/02/2020,9,210147125,0,0,0,0,0,0,
-Brasil,,,76,,,,26/02/2020,9,210147125,1,1,0,0,1,0,
-Brasil,,,76,,,,27/02/2020,9,210147125,1,0,0,0,1,0,
-Brasil,,,76,,,,28/02/2020,9,210147125,1,0,0,0,0,1,
-Brasil,,,76,,,,29/02/2020,9,210147125,2,1,0,0,1,1,
-Brasil,,,76,,,,01/03/2020,10,210147125,2,0,0,0,1,1,
+Brasil,0,0,76,0,0,0,25/02/2020,9,210147125,0,0,0,0,0,0,
+Brasil,0,0,76,0,0,0,26/02/2020,9,210147125,1,1,0,0,1,0,
+Brasil,0,0,76,0,0,0,27/02/2020,9,210147125,1,0,0,0,1,0,
+Brasil,0,0,76,0,0,0,28/02/2020,9,210147125,1,0,0,0,0,1,
+
