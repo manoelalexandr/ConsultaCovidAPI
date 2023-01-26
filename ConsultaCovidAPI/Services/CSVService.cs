@@ -23,6 +23,7 @@ namespace ConsultaCovidAPI.Services
             csv.Context.RegisterClassMap<DadosMap>();
 
             var records = csv.GetRecords<T>();
+
             return records;
         }
     }

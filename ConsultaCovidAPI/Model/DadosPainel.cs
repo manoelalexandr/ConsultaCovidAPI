@@ -13,33 +13,33 @@ namespace ConsultaCovidAPI.Model
         [Index(2)]
         public string? Municipio { get; set; }
         [Index(3)]
-        public int Coduf { get; set; }
+        public int? Coduf { get; set; }
         [Index(4)]
-        public int Codmun { get; set; }
+        public int? Codmun { get; set; }
         [Index(5)]
-        public int CodRegiaoSaude { get; set; }
+        public int? CodRegiaoSaude { get; set; }
         [Index(6)]
         public string? NomeRegiaoSaude { get; set; }
         [Index(7)]
         public DateTime Data { get; set; }
         [Index(8)]
-        public int SemanaEpi { get; set; }
+        public int? SemanaEpi { get; set; }
         [Index(9)]
-        public int PopulacaoTCU2019 { get; set; }
+        public int? PopulacaoTCU2019 { get; set; }
         [Index(10)]
-        public int CasosAcumulado { get; set; }
+        public int? CasosAcumulado { get; set; }
         [Index(11)]
-        public int CasosNovos { get; set; }
+        public int? CasosNovos { get; set; }
         [Index(12)]
-        public int ObitosAcumulado { get; set; }
+        public int? ObitosAcumulado { get; set; }
         [Index(13)]
-        public int ObitosNovos { get; set; }
+        public int? ObitosNovos { get; set; }
         [Index(14)]
-        public int Recuperadosnovos { get; set; }
+        public int? Recuperadosnovos { get; set; }
         [Index(15)]
-        public int EmAcompanhamentoNovos { get; set; }
+        public int? EmAcompanhamentoNovos { get; set; }
         [Index(16)]
-        public byte InteriorMetropolitana { get; set; }
+        public int? InteriorMetropolitana { get; set; }
 
 }
     

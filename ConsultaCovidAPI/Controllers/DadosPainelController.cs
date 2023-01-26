@@ -1,6 +1,5 @@
 ﻿using ConsultaCovidAPI.Model;
 using ConsultaCovidAPI.Services;
-using LINQtoCSV;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -19,18 +18,12 @@ namespace ConsultaCovidAPI.Controllers
         }
 
         [HttpGet("read-employees-csv")]
-        //public async Task<IActionResult> GetDadosCSV([FromForm] IFormFileCollection file)
-        //{
-        //    var dados = _csvService.ReadCSV<DadosPainel>(file[0].OpenReadStream());
-
-        //   return Ok(dados);
-        //}
 
         public async Task<IActionResult> GetDadosCSV() 
         {
-            
-            var dados = _csvService.ReadCSV<DadosPainel>(@".. \Content\Files\HIST_PAINEL_COVIDBR_2020_Parte2_16jan2023test.csv");
-
+            string path = @"C:\Users\manoel.bizerra\source\repos\ConsultaCovidAPI\ConsultaCovidAPI\Content\Files\HIST_PAINEL_COVIDBR_2020_Parte2_16jan2023test.csv";
+            var dados = _csvService.ReadCSV<DadosPainel>(path);
+           
             return Ok(dados);
         }
 
