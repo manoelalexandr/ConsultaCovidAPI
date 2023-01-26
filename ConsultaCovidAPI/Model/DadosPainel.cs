@@ -21,7 +21,7 @@ namespace ConsultaCovidAPI.Model
         [Index(6)]
         public string? NomeRegiaoSaude { get; set; }
         [Index(7)]
-        public DateTime Data { get; set; }
+        public string? Data { get; set; }
         [Index(8)]
         public int? SemanaEpi { get; set; }
         [Index(9)]

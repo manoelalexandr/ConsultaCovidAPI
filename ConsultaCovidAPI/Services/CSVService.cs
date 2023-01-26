@@ -19,7 +19,7 @@ namespace ConsultaCovidAPI.Services
                 Comment = '%'
             };
 
-            string path = @"C:\Users\manoel.bizerra\source\repos\ConsultaCovidAPI\ConsultaCovidAPI\Content\Files\HIST_PAINEL_COVIDBR_2020_Parte2_16jan2023test2.csv";
+            string path = @"C:\Users\manoel.bizerra\source\repos\ConsultaCovidAPI\ConsultaCovidAPI\Content\Files\HIST_PAINEL_COVIDBR_2020_Parte2_16jan2023.csv";
             var reader = new StreamReader(path);
             var csv = new CsvReader(reader, config);
 
