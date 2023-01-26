@@ -1,5 +1,5 @@
-﻿using ConsultaCovidAPI.Model;
-using ConsultaCovidAPI.Services;
+﻿using ConsultaCovidAPI.Interface;
+using ConsultaCovidAPI.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,10 +21,8 @@ namespace ConsultaCovidAPI.Controllers
 
         public async Task<IActionResult> GetDadosCSV() 
         {
-            string path = @"C:\Users\manoel.bizerra\source\repos\ConsultaCovidAPI\ConsultaCovidAPI\Content\Files\HIST_PAINEL_COVIDBR_2020_Parte2_16jan2023test.csv";
-            var dados = _csvService.ReadCSV<DadosPainel>(path);
-           
-            return Ok(dados);
+               
+            return Ok(_csvService.ReadCSV<DadosPainel>());
         }
 
     }
