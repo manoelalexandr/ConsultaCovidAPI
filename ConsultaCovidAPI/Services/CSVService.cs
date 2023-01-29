@@ -19,15 +19,18 @@ namespace ConsultaCovidAPI.Services
                 Comment = '%'
             };
 
-            string path = @"C:\Users\manoel.bizerra\source\repos\ConsultaCovidAPI\ConsultaCovidAPI\Content\Files\HIST_PAINEL_COVIDBR_2020_Parte2_16jan2023.csv";
+            //Chama todos os dados de um CSV, precisa aprimorar pra chamar de todos os 5
+            string path = @"C:\Users\manoe\source\repos\manoelalexandr\ConsultaCovidAPI\ConsultaCovidAPI\Content\Files\HIST_PAINEL_COVIDBR_2023_Parte1_16jan2023.csv";
             var reader = new StreamReader(path);
             var csv = new CsvReader(reader, config);
 
             csv.Context.RegisterClassMap<DadosMap>();
 
-            var records = csv.GetRecords<DadosPainel>();
+            var records = csv.GetRecords<DadosPainel>().ToList();
 
             return records;
         }
     }
+
+
 }
