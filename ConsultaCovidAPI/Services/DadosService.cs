@@ -17,25 +17,41 @@ namespace ConsultaCovidAPI.Services
             _csvService = csvService;
         }
 
-
         public IEnumerable<T> MaiorIndiceMortalidade<T>(string municipio, DateTime data)
         {
             throw new NotImplementedException();
         }
-        public IEnumerable<T> MaisCasos<T>(string municipio, DateTime data)
+        public IEnumerable<T> MaisCasos<T>(string UF, string data)
         {
-            throw new NotImplementedException();
-        }
-        IEnumerable<T> IDadosService.MaisObtos<T>(string UF)
-        {
-
-              var records = _csvService.ReadCSV<DadosPainel>();
+            var records = _csvService.ReadCSV<DadosPainel>();
 
             var registros = new List<DadosPainel>();
 
-            var query = from record in records
-                        where record.Estado == UF && record.ObitosAcumulado > 10000                      
-                        select record;
+            var query = (from record in records
+                         orderby record.CasosAcumulado descending
+                         where record.Estado == UF && Convert.ToDateTime(record.Data) == Convert.ToDateTime(data)
+                         && record.Municipio != ""
+                         select record).Take(10);
+
+            foreach (var item in query)
+            {
+                registros.Add(item);
+            }
+
+            return (IEnumerable<T>)registros;
+        }
+        IEnumerable<T> IDadosService.MaisObtos<T>(string UF, string data)
+        {
+
+            var records = _csvService.ReadCSV<DadosPainel>();
+
+            var registros = new List<DadosPainel>();
+
+            var query = (from record in records
+                        orderby record.ObitosAcumulado descending
+                        where record.Estado == UF && Convert.ToDateTime(record.Data) == Convert.ToDateTime(data) 
+                        && record.Municipio != ""                
+                        select record).Take(10);
 
             foreach (var item in query)
             {

@@ -10,26 +10,23 @@ namespace ConsultaCovidAPI.Controllers
     [ApiController]
     public class DadosPainelController : ControllerBase
     {
-        private readonly ICSVService _csvService;
         private readonly IDadosService _dadosService;
 
         public DadosPainelController(IDadosService dadosService)
         {
             _dadosService = dadosService;
         }
-
-        [HttpGet("read-employees-csv")]
-
-        public async Task<IActionResult> GetDadosCSV() 
+        [HttpGet("10-CIDADES-MAIS-OBTOS")]
+        public async Task<IActionResult> GetMaisObtos(string UF, string data)
         {
-            var dados = _csvService.ReadCSV<DadosPainel>();
+            var dados = _dadosService.MaisObtos<DadosPainel>(UF, data);
             return Ok(dados);
         }
 
-        [HttpGet("GetMaisObtos")]
-        public async Task<IActionResult> GetMaisObtos(string UF)
+        [HttpGet("10-CIDADES-MAIS-CASOS")]
+        public async Task<IActionResult> GetMaisCasos(string UF, string data)
         {
-            var dados = _dadosService.MaisObtos<DadosPainel>(UF);
+            var dados = _dadosService.MaisCasos<DadosPainel>(UF, data);
             return Ok(dados);
         }
 

@@ -20,7 +20,7 @@ namespace ConsultaCovidAPI.Services
             };
 
             //Chama todos os dados de um CSV, precisa aprimorar pra chamar de todos os 5
-            string path = @"C:\Users\manoe\source\repos\manoelalexandr\ConsultaCovidAPI\ConsultaCovidAPI\Content\Files\HIST_PAINEL_COVIDBR_2023_Parte1_16jan2023.csv";
+            string path = "Content/Files/HIST_PAINEL_COVIDBR_2023_Parte1_29jan2023.csv";
             var reader = new StreamReader(path);
             var csv = new CsvReader(reader, config);
 

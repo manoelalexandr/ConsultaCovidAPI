@@ -27,7 +27,7 @@ namespace ConsultaCovidAPI.Model
         [Index(9)]
         public int? PopulacaoTCU2019 { get; set; }
         [Index(10)]
-        public int? CasosAcumulado { get; set; }
+        public double CasosAcumulado { get; set; }
         [Index(11)]
         public int? CasosNovos { get; set; }
         [Index(12)]
