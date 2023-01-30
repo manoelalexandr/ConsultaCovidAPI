@@ -30,5 +30,12 @@ namespace ConsultaCovidAPI.Controllers
             return Ok(dados);
         }
 
+        [HttpGet("10-CIDADES-MAIOR-MORTALIDADE")]
+        public async Task<IActionResult> GetMaisMortalidade(string UF, string data)
+        {
+            var dados = _dadosService.MaiorIndiceMortalidade<DadosPainel>(UF, data);
+            return Ok(dados);
+        }
+
     }
 }
