@@ -21,26 +21,23 @@ namespace ConsultaCovidAPI.Services
         {
             var records = _csvService.ReadCSV<DadosPainel>();
 
-            var registros = new List<DadosPainel>();
-
-            var query = (from record in records         
+            var query = from record in records         
                          where record.Estado == UF && Convert.ToDateTime(record.Data) == Convert.ToDateTime(data)
                          && record.Municipio != ""
-                         orderby (record.ObitosAcumulado / record.PopulacaoTCU2019) * 100000 descending
-                         select record).Take(10);
+                         select record;
 
-            foreach (var item in query)
+            var mortalidade = new List<double>();
+
+            foreach (var record in query)
             {
-                registros.Add(item);
+                mortalidade.Add((Convert.ToDouble(record.ObitosAcumulado)/ Convert.ToDouble(record.PopulacaoTCU2019)) * 100000) ;
             }
 
-            return (IEnumerable<T>)registros;
+            return (IEnumerable<T>)query;
         }
         public IEnumerable<T> MaisCasos<T>(string UF, string data)
         {
             var records = _csvService.ReadCSV<DadosPainel>();
-
-            var registros = new List<DadosPainel>();
 
             var query = (from record in records
                          orderby record.CasosAcumulado descending
@@ -48,19 +45,12 @@ namespace ConsultaCovidAPI.Services
                          && record.Municipio != ""
                          select record).Take(10);
 
-            foreach (var item in query)
-            {
-                registros.Add(item);
-            }
-
-            return (IEnumerable<T>)registros;
+            return (IEnumerable<T>)query;
         }
         IEnumerable<T> IDadosService.MaisObtos<T>(string UF, string data)
         {
 
             var records = _csvService.ReadCSV<DadosPainel>();
-
-            var registros = new List<DadosPainel>();
 
             var query = (from record in records
                         orderby record.ObitosAcumulado descending
@@ -68,12 +58,7 @@ namespace ConsultaCovidAPI.Services
                         && record.Municipio != ""                
                         select record).Take(10);
 
-            foreach (var item in query)
-            {
-                registros.Add(item);
-            }
-
-            return (IEnumerable<T>)registros;
+            return (IEnumerable<T>)query;
 
         }
     }
