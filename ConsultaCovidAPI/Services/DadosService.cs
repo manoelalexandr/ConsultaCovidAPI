@@ -21,19 +21,19 @@ namespace ConsultaCovidAPI.Services
         {
             var records = _csvService.ReadCSV<DadosPainel>();
 
-            var query = from record in records         
-                         where record.Estado == UF && Convert.ToDateTime(record.Data) == Convert.ToDateTime(data)
-                         && record.Municipio != ""
-                         select record;
+            //var query = (from record in records
+            //            orderby record.IndiceMortalidade descending
+            //            where record.Estado == UF && Convert.ToDateTime(record.Data) == Convert.ToDateTime(data)
+            //             && record.Municipio != ""
+            //             select record).Take(10);
 
-            var mortalidade = new List<double>();
+            var query2 = records
+                .Where(x => x.Estado == UF && Convert.ToDateTime(x.Data) == Convert.ToDateTime(data) && x.Municipio != "")
+                .OrderByDescending(x => x.IndiceMortalidade)
+                //.Select(x => x.IndiceMortalidade)
+                .Take(10);
 
-            foreach (var record in query)
-            {
-                mortalidade.Add((Convert.ToDouble(record.ObitosAcumulado)/ Convert.ToDouble(record.PopulacaoTCU2019)) * 100000) ;
-            }
-
-            return (IEnumerable<T>)query;
+            return (IEnumerable<T>)query2;
         }
         public IEnumerable<T> MaisCasos<T>(string UF, string data)
         {

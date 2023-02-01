@@ -41,6 +41,15 @@ namespace ConsultaCovidAPI.Model
         [Index(16)]
         public int? InteriorMetropolitana { get; set; }
 
-}
+        [Ignore]
+        public float IndiceMortalidade { 
+            get
+            {
+                var populacao = PopulacaoTCU2019.HasValue ? (float)PopulacaoTCU2019.Value : 0;
+                return ((float)ObitosAcumulado.Value / populacao) * 100000;
+            }
+        }
+
+    }
     
 }
