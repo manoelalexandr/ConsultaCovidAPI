@@ -12,7 +12,7 @@ namespace ConsultaCovidAPI.Services
     {
         private readonly ICSVService _csvService;
 
-        public DadosService(ICSVService csvService)
+        public DadosService(ICSVService csvService) 
         {
             _csvService = csvService;
         }
